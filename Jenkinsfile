@@ -8,9 +8,9 @@ pipeline {
     stages {
         stage('Cleanup') {
             steps {
-                bat 'docker stop $(docker ps -aq)'
-                bat 'docker rm $(docker ps -aq)'
-                bat 'docker rmi $(docker images -aq)'
+                bat 'FOR /F %%i IN (\'docker ps -q\') DO docker stop %%i'
+                bat 'FOR /F %%i IN (\'docker ps -q\') DO docker rm %%i'
+                bat 'FOR /F %%i IN (\'docker images -q\') DO docker rmi %%i'
                 bat 'docker system prune -af'
             }
         }

@@ -6,14 +6,14 @@ pipeline {
     }
 
     stages {
-        stage('Cleanup') {
-            steps {
-                bat 'FOR /F %%i IN (\'docker ps -aq\') DO docker stop %%i'
-                bat 'FOR /F %%i IN (\'docker ps -aq\') DO docker rm %%i'
-                bat 'FOR /F %%i IN (\'docker images -aq\') DO docker rmi %%i'
-                bat 'docker system prune -af'
-            }
-        }
+        // stage('Cleanup') {
+        //     steps {
+        //         bat 'FOR /F %%i IN (\'docker ps -aq\') DO docker stop %%i'
+        //         bat 'FOR /F %%i IN (\'docker ps -aq\') DO docker rm %%i'
+        //         bat 'FOR /F %%i IN (\'docker images -aq\') DO docker rmi %%i'
+        //         bat 'docker system prune -af'
+        //     }
+        // }
 
         stage('Build Mysql') {
             steps {

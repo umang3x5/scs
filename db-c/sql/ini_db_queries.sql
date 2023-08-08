@@ -17,7 +17,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
+USE scs;
 CREATE TABLE  IF NOT EXISTS `inventory` (
   `RFID` bigint(20) NOT NULL,
   `deviceID` int(11) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE  IF NOT EXISTS `inventory` (
 --
 -- Dumping data for table `inventory`
 --
-
+USE scs;
 INSERT INTO `inventory` (`RFID`, `deviceID`, `uID`, `cType`, `usedBeforeWash`, `availableInCloset`) VALUES
 (123456785, 123456, 5857572, 9, 2, 1);
 
@@ -39,8 +39,8 @@ INSERT INTO `inventory` (`RFID`, `deviceID`, `uID`, `cType`, `usedBeforeWash`, `
 --
 -- Table structure for table `super_user`
 --
-
-CREATE TABLE  IF NOT EXISTS `super_user` (
+USE scs;
+CREATE TABLE IF NOT EXISTS `super_user` (
   `deviceID` int(11) NOT NULL,
   `devicename` varchar(255) NOT NULL,
   `pin` int(11) NOT NULL
@@ -49,7 +49,7 @@ CREATE TABLE  IF NOT EXISTS `super_user` (
 --
 -- Dumping data for table `super_user`
 --
-
+USE scs;
 INSERT INTO `super_user` (`deviceID`, `devicename`, `pin`) VALUES
 (123456, 'Mydevice', 123456);
 
@@ -58,7 +58,7 @@ INSERT INTO `super_user` (`deviceID`, `devicename`, `pin`) VALUES
 --
 -- Table structure for table `user_profile`
 --
-
+USE scs;
 CREATE TABLE  IF NOT EXISTS `user_profile` (
   `uID` int(11) NOT NULL,
   `deviceID` int(11) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE  IF NOT EXISTS `user_profile` (
 --
 -- Dumping data for table `user_profile`
 --
-
+USE scs;
 INSERT INTO `user_profile` (`uID`, `deviceID`, `username`, `firstname`, `lastname`, `gender`, `age`, `city`) VALUES
 (5857572, 123456, 'meet', 'Meet', 'Kevadiya', 'male', 22, 'Windsor'),
 (5857573, 123456, 'arjun', 'Arjun', 'Kheni', 'male', 22, 'Windsor');
@@ -85,12 +85,14 @@ INSERT INTO `user_profile` (`uID`, `deviceID`, `username`, `firstname`, `lastnam
 --
 -- Indexes for table `inventory`
 --
+USE scs;
 ALTER TABLE `inventory`
   ADD PRIMARY KEY (`RFID`,`deviceID`);
 
 --
 -- Indexes for table `super_user`
 --
+USE scs;
 ALTER TABLE `super_user`
   ADD PRIMARY KEY (`deviceID`),
   ADD UNIQUE KEY `username` (`devicename`);
@@ -98,6 +100,7 @@ ALTER TABLE `super_user`
 --
 -- Indexes for table `user_profile`
 --
+USE scs;
 ALTER TABLE `user_profile`
   ADD PRIMARY KEY (`uID`),
   ADD UNIQUE KEY `username` (`username`);
@@ -109,6 +112,7 @@ ALTER TABLE `user_profile`
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
+USE scs;
 ALTER TABLE `user_profile`
   MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5857574;
 COMMIT;
@@ -119,6 +123,7 @@ COMMIT;
 
 
 -- Migrations
+USE scs;
 ALTER TABLE `super_user` CHANGE `deviceID` `deviceID` VARCHAR(255) NOT NULL;
 ALTER TABLE `user_profile` CHANGE `deviceID` `deviceID` VARCHAR(255) NOT NULL;
 

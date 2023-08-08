@@ -15,6 +15,11 @@ pipeline {
         //     }
         // }
 
+        //    bat 'docker stop $(docker ps -aq)'
+                // bat 'docker rm $(docker ps -aq)'
+                // bat 'docker rmi $(docker images -aq)'
+                // bat 'docker system prune -af'
+
         stage('Build Mysql') {
             steps {
                 dir('db-c') {
@@ -46,7 +51,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'vss-docker-key', variable: 'DOCKERHUB_CREDENTIALS_PSW')]) {
                     bat 'docker login -u umang3x5 -p %DOCKERHUB_CREDENTIALS_PSW%'
-                    bat 'docker push umang3x5/smart-clothing-system-fronted:1.0'
+                    bat 'docker push umang3x5/smart-clothing-system-frontend:1.0'
                     bat 'docker push umang3x5/smart-clothing-system-backend:1.0'
                     bat 'docker push umang3x5/smart-clothing-system-scs-mysql-db:1.0'
                 }

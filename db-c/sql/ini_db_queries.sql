@@ -9,13 +9,16 @@
 
 ALTER USER 'root'@'%' IDENTIFIED WITH 'mysql_native_password' BY '';
 
+CREATE DATABASE IF NOT EXISTS scs;
+
+USE scs;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-CREATE TABLE `inventory` (
+CREATE TABLE  IF NOT EXISTS `inventory` (
   `RFID` bigint(20) NOT NULL,
   `deviceID` int(11) NOT NULL,
   `uID` int(11) NOT NULL,
@@ -37,7 +40,7 @@ INSERT INTO `inventory` (`RFID`, `deviceID`, `uID`, `cType`, `usedBeforeWash`, `
 -- Table structure for table `super_user`
 --
 
-CREATE TABLE `super_user` (
+CREATE TABLE  IF NOT EXISTS `super_user` (
   `deviceID` int(11) NOT NULL,
   `devicename` varchar(255) NOT NULL,
   `pin` int(11) NOT NULL
@@ -56,7 +59,7 @@ INSERT INTO `super_user` (`deviceID`, `devicename`, `pin`) VALUES
 -- Table structure for table `user_profile`
 --
 
-CREATE TABLE `user_profile` (
+CREATE TABLE  IF NOT EXISTS `user_profile` (
   `uID` int(11) NOT NULL,
   `deviceID` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,

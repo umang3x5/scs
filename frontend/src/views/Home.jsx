@@ -16,7 +16,7 @@ import bannerImage from '../assets/images/welcome-banner.svg';
 const DEVICE_ID = new uuid.DeviceUUID().get();
 
 const Home = () => {
-  const pageName = 'HomeDC';
+  const pageName = 'HomeDC- Changges';
   const history = useHistory();
   const { showErrorToastr } = useToastr();
 
